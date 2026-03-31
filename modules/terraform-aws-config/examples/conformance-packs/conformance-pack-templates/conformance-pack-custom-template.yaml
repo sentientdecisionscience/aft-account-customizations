@@ -1,0 +1,11 @@
+Parameters:
+  AccessKeysRotatedParameterMaxAccessKeyAge:
+    Type: String
+Resources:
+  IAMPasswordPolicy:
+    Properties:
+      ConfigRuleName: IAMPasswordPolicy
+      Source:
+        Owner: AWS
+        SourceIdentifier: IAM_PASSWORD_POLICY
+    Type: AWS::Config::ConfigRule

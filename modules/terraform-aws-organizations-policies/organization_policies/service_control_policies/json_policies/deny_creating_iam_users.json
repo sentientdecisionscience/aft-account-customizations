@@ -1,0 +1,9 @@
+{
+  "Sid": "DenyCreatingIAMUsers",
+  "Effect": "Deny",
+  "Action": [
+    "iam:CreateUser",
+    "iam:CreateAccessKey"
+  ],
+  "Resource": "*"
+}

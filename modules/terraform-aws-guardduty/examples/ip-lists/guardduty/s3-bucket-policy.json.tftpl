@@ -1,0 +1,17 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowGuardDutyReadIPSet",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject"],
+            "Resource": [
+                "${S3_BUCKET_ARN}",
+                "${S3_BUCKET_ARN}/*"
+            ]
+        }
+    ]
+}

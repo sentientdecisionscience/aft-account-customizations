@@ -1,0 +1,13 @@
+{
+    "Sid": "DenyKMSLowRsaEncryption",
+    "Effect":"Deny",
+    "Principal":"*",
+    "Action":"kms:CreateKey",
+    "Resource":"*",
+    "Condition":{
+       "StringEquals":{
+          "kms:KeyUsage":"ENCRYPT_DECRYPT",
+          "kms:KeySpec": ["RSA_2048", "RSA_3072"]
+       }
+    }
+}

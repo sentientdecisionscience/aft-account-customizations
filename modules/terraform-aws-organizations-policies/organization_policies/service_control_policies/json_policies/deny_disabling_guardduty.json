@@ -1,0 +1,30 @@
+{
+  "Sid": "PreventsUsersFromDisablingGuardDuty",
+  "Effect": "Deny",
+  "Action": [
+    "guardduty:UpdateThreatIntelSet",
+    "guardduty:UpdatePublishingDestination",
+    "guardduty:UpdateIPSet",
+    "guardduty:UpdateFindingsFeedback",
+    "guardduty:UpdateFilter",
+    "guardduty:UpdateDetector",
+    "guardduty:UntagResource",
+    "guardduty:UnarchiveFindings",
+    "guardduty:StopMonitoringMembers",
+    "guardduty:StartMonitoringMembers",
+    "guardduty:InviteMembers",
+    "guardduty:DisassociateMembers",
+    "guardduty:DisassociateFromMasterAccount",
+    "guardduty:DeleteThreatIntelSet",
+    "guardduty:DeletePublishingDestination",
+    "guardduty:DeleteMembers",
+    "guardduty:DeleteInvitations",
+    "guardduty:DeleteIPSet",
+    "guardduty:DeleteFilter",
+    "guardduty:DeleteDetector",
+    "guardduty:DeclineInvitations",
+    "guardduty:ArchiveFindings",
+    "guardduty:AcceptAdministratorInvitation"
+  ],
+  "Resource": "*"
+}

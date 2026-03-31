@@ -1,0 +1,11 @@
+{
+  "Sid": "PreventsUsersFromDeletingAccessAnalyzer",
+  "Effect": "Deny",
+  "Action": "access-analyzer:DeleteAnalyzer",
+  "Resource": "*",
+  "Condition": {
+    "ArnNotLike": {
+      "aws:PrincipalArn": "arn:aws:iam::*:role/AWSAFTExecution"
+    }
+  }
+}

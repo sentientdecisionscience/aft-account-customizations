@@ -1,0 +1,70 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowGuardDutyGetBucketLocation",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "s3:GetBucketLocation",
+            "Resource": "${S3_BUCKET_ARN}",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceArn": "${DETECTOR_ARN}"
+                }
+            }
+        },
+        {
+            "Sid": "AllowGuardDutyPutObject",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "${S3_BUCKET_ARN}/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "${ACCOUNT_ID}",
+                    "aws:SourceArn": "${DETECTOR_ARN}"
+                }
+            }
+        },
+        {
+            "Sid": "DenyUnencryptedObjectUploads",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:PutObject",
+            "Resource": "${S3_BUCKET_ARN}/*",
+            "Condition": {
+                "StringNotEquals": {
+                    "s3:x-amz-server-side-encryption": "aws:kms"
+                }
+            }
+        },
+        {
+            "Sid": "DenyIncorrectEncryptionHeader",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:PutObject",
+            "Resource": "${S3_BUCKET_ARN}/*",
+            "Condition": {
+                "StringNotEquals": {
+                    "s3:x-amz-server-side-encryption-aws-kms-key-id": "${KMS_KEY_ARN}"
+                }
+            }
+        },
+        {
+            "Sid": "DenyNonHTTPSAccess",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": "${S3_BUCKET_ARN}/*",
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        }
+    ]
+}

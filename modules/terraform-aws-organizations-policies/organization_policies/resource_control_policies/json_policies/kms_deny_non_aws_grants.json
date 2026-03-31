@@ -1,0 +1,13 @@
+{
+    "Sid": "DenyKMSNonAWSGrants",
+    "Effect":"Deny",
+    "Principal":"*",
+    "Action":"kms:CreateGrant",
+    "Resource":"*",
+    "Condition":{
+       "BoolIfExists":{
+          "kms:GrantIsForAWSResource":"false",
+          "aws:PrincipalIsAWSService":"false"
+       }
+    }
+}

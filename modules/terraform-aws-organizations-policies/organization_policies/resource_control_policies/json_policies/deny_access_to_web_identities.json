@@ -1,0 +1,17 @@
+{
+    "Sid": "DenyAccessToWebIdentities",
+    "Effect": "Deny",
+    "Principal": "*",
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Resource": "*",
+    "Condition": {
+        "StringEquals": {
+            "aws:federatedProvider": [
+                "accounts.google.com",
+                "graph.facebook.com",
+                "cognito-identity.amazonaws.com",
+                "www.amazon.com"
+            ]
+        }
+    }
+}

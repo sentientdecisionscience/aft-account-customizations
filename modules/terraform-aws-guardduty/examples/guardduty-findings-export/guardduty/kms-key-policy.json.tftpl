@@ -1,0 +1,54 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowRootAccountAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::${ACCOUNT_ID}:root"
+      },
+      "Action": "kms:*",
+      "Resource": "${KMS_KEY_ARN}"
+    },
+    {
+      "Sid": "AllowGuardDutyToUseKey",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "guardduty.amazonaws.com"
+      },
+      "Action": [
+        "kms:GenerateDataKey",
+        "kms:Encrypt",
+        "kms:DescribeKey",
+        "kms:Decrypt"
+      ],
+      "Resource": "${KMS_KEY_ARN}",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceAccount": "${ACCOUNT_ID}",
+          "aws:SourceArn": "${DETECTOR_ARN}"
+        }
+      }
+    },
+    {
+      "Sid": "AllowS3ToUseKey",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": [
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:Encrypt",
+        "kms:DescribeKey",
+        "kms:Decrypt"
+      ],
+      "Resource": "${KMS_KEY_ARN}",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceAccount": "${ACCOUNT_ID}"
+        }
+      }
+    }
+  ]
+}

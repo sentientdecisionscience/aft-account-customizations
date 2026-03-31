@@ -1,0 +1,14 @@
+{
+  "Sid": "PreventsExternalRAMshares",
+  "Effect": "Deny",
+  "Action": [
+    "ram:UpdateResourceShare",
+    "ram:CreateResourceShare"
+  ],
+  "Resource": "*",
+  "Condition": {
+    "Bool": {
+      "ram:RequestedAllowsExternalPrincipals": "true"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "Sid": "DenyS3ACLDisablement",
+    "Effect":"Deny",
+    "Principal":"*",
+    "Action":"s3:CreateBucket",
+    "Resource":"*",
+    "Condition":{
+       "StringNotEquals":{
+          "s3:x-amz-object-ownership":"BucketOwnerEnforced"
+       }
+    }
+}

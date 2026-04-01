@@ -6,7 +6,7 @@ module "budgets" {
       budget_type  = "COST"
       limit_amount = 7000
       time_unit    = "MONTHLY"
-      account_id   = local.account_map["organization_management_account"]
+      account_id   = local.account_map["organization_management"]
 
       notification = [
         {

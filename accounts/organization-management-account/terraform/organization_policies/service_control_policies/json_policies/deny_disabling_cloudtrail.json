@@ -1,0 +1,10 @@
+{
+    "Sid": "PreventsUserFromEditingCloudTrail",
+    "Effect": "Deny",
+    "Action": [
+      "cloudtrail:UpdateTrail",
+      "cloudtrail:DeleteTrail",
+      "cloudtrail:StopLogging"
+    ],
+    "Resource": "*"
+  }

@@ -1,0 +1,18 @@
+{
+    "Sid": "EnforceSecureTransport",
+    "Effect": "Deny",
+    "Principal": "*",
+    "Action": [
+        "sts:*",
+        "s3:*",
+        "sqs:*",
+        "secretsmanager:*",
+        "kms:*"
+    ],
+    "Resource": "*",
+    "Condition": {
+        "BoolIfExists": {
+            "aws:SecureTransport": "false"
+        }
+    }
+}

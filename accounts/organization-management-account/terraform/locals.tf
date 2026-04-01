@@ -28,18 +28,30 @@ locals {
     "infrastructure" = "ou-v919-1abjeb6l"
   }
 
+  # Organization SCP Restricted OUs
+  unrestricted_ous = [
+    local.ou_map["sandbox"],
+    local.ou_map["suspended"]
+  ]
+
+  filtered_level_1_ous = setsubtract([
+    for ou in data.aws_organizations_organizational_units.level_1_ous.children : ou.id
+  ], local.unrestricted_ous)
+
+  # Budget Alarms
   budget_alarm_email_addresses = [
     "aws.billing-alarms@sentientdecisionscience.com"
   ]
 
+  # Cloudwatch Alarms
   cloudwatch_log_group_name          = "aws-controltower/CloudTrailLogs-c9n-gze"
   cloudwatch_alarm_destination_email = "aws.security-alerts@sentientdecisionscience.com"
 
-  # Compliance organizations
   all_account_ids = [
     for acc in data.aws_organizations_organization.current.accounts : acc.id
   ]
 
+  # Compliance organizations for HIPAA
   hipaa_account_ids = [
 
   ]

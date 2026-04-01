@@ -1,0 +1,53 @@
+{
+  "Sid": "DenyUnsupportedRegions",
+  "Effect": "Deny",
+  "NotAction": [
+    "wellarchitected:*",
+    "wafv2:*",
+    "waf:*",
+    "waf-regional:*",
+    "trustedadvisor:*",
+    "support:*",
+    "sts:*",
+    "shield:*",
+    "s3:PutAccountPublic*",
+    "s3:ListMultiRegionAccessPoints",
+    "s3:ListAllMyBuckets",
+    "s3:GetAccountPublic*",
+    "route53domains:*",
+    "route53:*",
+    "route53-recovery-readiness:ListReadinessChecks",
+    "route53-recovery-control-config:ListControlPanels",
+    "pricing:*",
+    "organizations:*",
+    "networkmanager:*",
+    "mobileanalytics:*",
+    "kms:*",
+    "importexport:*",
+    "iam:*",
+    "health:*",
+    "globalaccelerator:*",
+    "fms:*",
+    "ec2:DescribeVpnGateways",
+    "ec2:DescribeTransitGateways",
+    "ec2:DescribeRegions",
+    "directconnect:*",
+    "cur:*",
+    "config:*",
+    "cloudfront:*",
+    "chime:*",
+    "ce:*",
+    "budgets:*",
+    "aws-portal:*",
+    "aws-marketplace:*",
+    "aws-marketplace-management:*",
+    "acm:*",
+    "a4b:*"
+  ],
+  "Resource": "*",
+  "Condition": {
+    "StringNotEquals": {
+      "aws:RequestedRegion": ${allowed_regions}
+    }
+  }
+}

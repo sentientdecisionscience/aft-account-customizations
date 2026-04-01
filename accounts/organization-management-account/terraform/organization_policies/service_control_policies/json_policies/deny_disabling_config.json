@@ -1,0 +1,11 @@
+{
+  "Sid": "PreventsUsersFromEditingConfig",
+  "Effect": "Deny",
+  "Action": [
+    "config:StopConfigurationRecorder",
+    "config:DeleteDeliveryChannel",
+    "config:DeleteConfigurationRecorder",
+    "config:DeleteConfigRule"
+  ],
+  "Resource": "*"
+}

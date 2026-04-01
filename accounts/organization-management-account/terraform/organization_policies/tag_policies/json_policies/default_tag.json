@@ -1,0 +1,10 @@
+{
+    "CostCenter": {
+        "tag_key": {
+            "@@assign": "CostCenter",
+            "@@operators_allowed_for_child_policies": [
+                "@@none"
+            ]
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "Sid": "DenyDeletingCloudWatchLogs",
+  "Effect": "Deny",
+  "Action": [
+    "logs:DeleteLogStream",
+    "logs:DeleteLogGroup",
+    "ec2:DeleteFlowLogs"
+  ],
+  "Resource": "*"
+}

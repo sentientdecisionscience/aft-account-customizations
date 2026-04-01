@@ -1,0 +1,6 @@
+{
+    "Sid": "DenyLeavingOrganizations",
+    "Effect": "Deny",
+    "Action": ["organizations:LeaveOrganization"],
+    "Resource": "*"
+  }

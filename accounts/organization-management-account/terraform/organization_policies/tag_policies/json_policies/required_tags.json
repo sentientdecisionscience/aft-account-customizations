@@ -1,0 +1,27 @@
+{
+  "Department": {
+    "tag_key": {
+      "@@assign": "Department"
+    }
+  },
+  "Environment": {
+    "tag_key": {
+      "@@assign": "Environment"
+    }
+  },
+  "OrgUnit": {
+    "tag_key": {
+      "@@assign": "OrgUnit"
+    }
+  },
+  "Owner": {
+    "tag_key": {
+      "@@assign": "Owner"
+    }
+  },
+  "Project": {
+    "tag_key": {
+      "@@assign": "Project"
+    }
+  }
+}

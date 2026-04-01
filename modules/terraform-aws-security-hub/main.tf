@@ -145,5 +145,10 @@ resource "aws_securityhub_configuration_policy_association" "policy_association"
   policy_id = aws_securityhub_configuration_policy.config_policy[each.key].id
   target_id = each.key
 
+  timeouts {
+    create = "10m"
+    update = "10m"
+  }
+
   depends_on = [aws_securityhub_configuration_policy.config_policy]
 }

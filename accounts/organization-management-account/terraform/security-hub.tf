@@ -16,7 +16,7 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/organizations_delegated_administrator
 resource "aws_organizations_delegated_administrator" "securityhub_delegated_administrator" {
   service_principal = "securityhub.amazonaws.com"
-  account_id        = local.account_map["audit_account"]
+  account_id        = local.account_map["audit"]
 }
 
 # Set the Audit Account as the Administrator of Security Hub
@@ -24,5 +24,5 @@ resource "aws_organizations_delegated_administrator" "securityhub_delegated_admi
 resource "aws_securityhub_organization_admin_account" "securityhub_admin_account" {
   depends_on = [aws_organizations_delegated_administrator.securityhub_delegated_administrator]
 
-  admin_account_id = local.account_map["audit_account"]
+  admin_account_id = local.account_map["audit"]
 }

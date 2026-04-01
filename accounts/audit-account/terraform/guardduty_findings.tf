@@ -202,7 +202,8 @@ data "aws_iam_policy_document" "guardduty_kms_policy" {
 
     actions = [
       "kms:GenerateDataKey",
-      "kms:DescribeKey"
+      "kms:DescribeKey",
+      "kms:Decrypt"
     ]
 
     resources = [aws_kms_key.guardduty_key.arn]

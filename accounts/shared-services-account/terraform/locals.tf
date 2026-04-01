@@ -1,3 +1,3 @@
 locals {
-  permission_sets_prefix = "DSC"
+  permission_sets_prefix = "SDS"
 }

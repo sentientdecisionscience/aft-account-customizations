@@ -201,7 +201,8 @@ data "aws_iam_policy_document" "guardduty_kms_policy" {
     }
 
     actions = [
-      "kms:GenerateDataKey"
+      "kms:GenerateDataKey",
+      "kms:DescribeKey"
     ]
 
     resources = [aws_kms_key.guardduty_key.arn]
@@ -213,10 +214,10 @@ data "aws_iam_policy_document" "guardduty_kms_policy" {
     }
 
     condition {
-      test     = "ArnLike"
+      test     = "StringEquals"
       variable = "aws:SourceArn"
       values = [
-        "arn:aws:guardduty:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:detector/*"
+        data.aws_guardduty_detector.organization_detector.arn
       ]
     }
   }

@@ -28,4 +28,18 @@ locals {
     "infrastructure" = "ou-v919-1abjeb6l"
   }
 
+  partition = data.aws_partition.current.partition
+  region    = data.aws_region.current.region
+
+  security_standards = {
+    "aws-foundational-security-best-practices" = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/aws-foundational-security-best-practices/v/1.0.0")
+    "cis-aws-foundations-benchmark-v1.2.0"     = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "ruleset/cis-aws-foundations-benchmark/v/1.2.0")
+    "cis-aws-foundations-benchmark-v1.4.0"     = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/cis-aws-foundations-benchmark/v/1.4.0")
+    "cis-aws-foundations-benchmark-v3.0.0"     = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/cis-aws-foundations-benchmark/v/3.0.0")
+    "nist-800-171-rev2"                        = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/nist-800-171/v/2.0.0")
+    "nist-800-53-rev5"                         = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/nist-800-53/v/5.0.0")
+    "pci-dss-v3.2.1"                           = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/pci-dss/v/3.2.1")
+    "pci-dss-v4.0.1"                           = provider::aws::arn_build(local.partition, "securityhub", local.region, "", "standards/pci-dss/v/4.0.1")
+  }
+
 }

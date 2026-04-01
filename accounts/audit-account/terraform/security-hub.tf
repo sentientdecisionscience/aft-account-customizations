@@ -29,7 +29,7 @@ module "security_hub" {
   ####################################################################################################################
   finding_aggregator = {
     linking_mode      = "SPECIFIED_REGIONS"
-    specified_regions = ["us-east-1"]
+    specified_regions = ["us-west-1"]
   }
 
   # Configuration Policy Hierarchy: left to right | highest to lowest precedence

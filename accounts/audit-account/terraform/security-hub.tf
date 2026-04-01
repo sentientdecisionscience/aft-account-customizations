@@ -91,7 +91,7 @@ module "security_hub" {
       enabled_standard_arns = []
     },
     {
-      target_id             = local.account_map["organization_management_account"]
+      target_id             = local.account_map["organization_management"]
       service_enabled       = false
       enabled_standard_arns = []
     }

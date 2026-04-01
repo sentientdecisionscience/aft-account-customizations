@@ -28,4 +28,25 @@ locals {
     "infrastructure" = "ou-v919-1abjeb6l"
   }
 
+  budget_alarm_email_addresses = [
+    "aws.billing-alarms@sentientdecisionscience.com"
+  ]
+
+  cloudwatch_log_group_name          = "aws-controltower/CloudTrailLogs-c9n-gze"
+  cloudwatch_alarm_destination_email = "aws.security-alerts@sentientdecisionscience.com"
+
+  # Compliance organizations
+  all_account_ids = [
+    for acc in data.aws_organizations_organization.current.accounts : acc.id
+  ]
+
+  hipaa_account_ids = [
+
+  ]
+
+  non_hipaa_account_ids = [
+    for id in local.all_account_ids :
+    id if contains(local.hipaa_account_ids, id) == false
+  ]
+
 }

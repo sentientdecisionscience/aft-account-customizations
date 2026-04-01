@@ -14,7 +14,7 @@ module "budgets" {
           threshold                  = 80
           threshold_type             = "PERCENTAGE"
           notification_type          = "FORECASTED"
-          subscriber_email_addresses = ["aws.billing@sentientdecisionscience.com"]
+          subscriber_email_addresses = local.budget_alarm_email_addresses
         }
       ]
     }

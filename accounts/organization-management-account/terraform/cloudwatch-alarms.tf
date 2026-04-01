@@ -9,7 +9,7 @@
 module "cloudwatch_alarms" {
   source = "../../../modules/terraform-aws-cloudwatch-alarms"
 
-  log_group_name = "aws-controltower/CloudTrailLogs-c9n-gze"
+  log_group_name = local.cloudwatch_log_group_name
 
   # Alarms when an API call is made to create, update, or delete Cloudtrail.
   cloudtrail_alarm = false
@@ -34,5 +34,5 @@ module "cloudwatch_alarms" {
   # Alarms when a user signs in without MFA.
   mfa_alarm = true
   # Destination email to send notifications to.
-  alarms_destination_email = "aws.security-alerts@sentientdecisionscience.com"
+  alarms_destination_email = local.cloudwatch_alarm_destination_email
 }

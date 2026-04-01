@@ -20,10 +20,10 @@
 
 # Delegate Administration of Config to the Audit Account
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/organizations_delegated_administrator
-resource "aws_organizations_delegated_administrator" "config" {
-  account_id        = local.account_map["audit"]
-  service_principal = "config.amazonaws.com"
-}
+# resource "aws_organizations_delegated_administrator" "config" {
+#   account_id        = local.account_map["audit"]
+#   service_principal = "config.amazonaws.com"
+# }
 
 # Delegate Administration of Config Multi-Account Setup to the Audit Account
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/organizations_delegated_administrator
